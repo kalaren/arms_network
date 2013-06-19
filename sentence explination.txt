@@ -1,0 +1,18 @@
+Opening the webpage it prompts the user for a name and nickname.
+Generating a agent with money of 1000 and inventory thats an empty array.
+Setting a bunch of javascript variables to their html Id elements.
+Generates a game that sets its attributes to javascript variables.
+Also setting up a badThings array.
+Finally generating the page with refreshView to print everything from agent, cities, items, and inventory(which is empty)
+The user can then travel to other cities, which will set the currentCity to a different city and generate new html.
+Or buy and item, which will prompt for an amount that is greater than 0.
+With an amount it will check if the user has enough money and prompt a confirm if they do. Or exit the loop if they don't
+If they do it subtracts from their agent.money pool the total cost.
+Adds the items to the agent.invetory array.
+The user can now travel to another city generating new html and a sell button beside the item in their inventory if an item isn't being sold at that city.
+User sells and gets prompted for amount that must be their between current inventory amount or 1.
+If the amount passes money is added to agent.money, and items are removed from inventory.
+Repeat
+
+Buying is broken things the amount is a string.
+Prices don't get recalculated other than at start of game.

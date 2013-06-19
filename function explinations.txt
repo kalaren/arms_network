@@ -1,0 +1,189 @@
+List of Functions
+	function promptForNumber(message)
+loop that prompts for a number till they enter some not empty and is a number
+returns the number
+
+	function getRandomIntInRange(min, max)
+Given two variables min and max.
+Subtract min from max to get highest possible number minus the minimum.
+Math.random() gets a random number from one to the above number. 
+add min to put the number bewteen the supplied min and max.
+Math.floor rounds the number and is returned
+
+	function createButtonForCity(city)
+
+create a button and set it to the $button variable.
+set the data-city attribute to the supplied city data
+set text to Travel Here
+add class of 'btn'
+return complete button
+
+	function createButtonForItem(item)
+
+create a variable $buy
+set a blank button to $buy
+set the attribute data-item to a supplied item
+set text to buy
+add class of 'btn'
+setup a on click function for the $buy button
+sets the data to a var item and sets the variable to a specific item in the current city, of the current game.
+prints to console the item thats being bought.
+uses butItem function feeding the item itself
+refreshes screen
+returns buy button
+
+	function sample(items, numberOfItems)
+
+create empty array called sampleOfItems
+in loop creats variable item
+an inner loop sets randomizes a num and sets item to the item at that index in the supplied items array.
+it gets pushed into sampleOfItems till sampleOfItems length = spplied numberOfItems
+returns an array of sampleofItems
+
+
+	function printCities(currentCity)
+
+sets _cities text to empty string
+sets the title text to the supplied currentCity's name attribute
+proceeds to generate the html for the left side of the screen in a table
+itereates through _cities and if it isn't the currenty city adss a button class and click function
+clicking will run changeCity, to set the currenty city to a different one
+rollDieForBadThing will see if you encounter a bad event
+refreshViews refreshes to change the html text and buttons appropriate to the city the user clicks
+Changes the button for the one you clicked so the text says You are here and disables it.
+
+	function printItems(currentCity)
+
+blanks item text
+iterates through the supplied currentCitys items attribute array.
+building rows and cells of the table giving them classes
+creating buttons for each of the items in the supplied current city
+seting item text the name of item and price text to current item price
+appending the item value and the button to the row, then adding the row to the _item variable
+
+
+	function printInventory(inventory, currentCityItems)
+
+creates the html for the users inventory and a sell button if the city item list doesn't have it, doesn't generate a unique sell price
+on click it creates a variable that equals the item they clicked to sell and runs sellItem supplying the item and refreshing
+
+adds text saying the the quantity and worth
+
+adds everything to a row and adds the row to _inventory
+
+
+	function printProfile(agent)
+
+Just prints information regarding the user(agent)
+setting the tags text to their companion attribute in agent
+
+
+Item
+	recalculatePrice = function()
+
+changes the current price  of an item using a predefined min and max from _items and the getRandomIntInRange function
+
+
+Game
+	refreshViews = function()
+reprints cities items inventory and profile when called
+blanks their respective text then generates the html
+
+
+	changeCity = function(newCity)
+logs on console the user is trying to change to a different city sets currentcity to the supplied new city and refreshes view
+
+
+	badThing = function()
+
+uses getRandomIntInRange from 1-10
+prints to console the roll
+if 1 returns true otherwise false
+
+	makeBadThingHappen = function()
+
+uses getRandomIntInRange to get a num to plug in as index of array badThings
+runs a badThing supplying agent to it happens to them
+logs on console the badThing and completion of badThing
+
+
+	rollDieForBadThing = function ()
+
+If badthing exists in the game it runs makeBadThingHappen
+else alerts user that nothing bad happened
+
+	buyItem = function(item)
+
+sets a check to false
+prompts for how many, you must enter a number 1 or higher loops till that happens then changes the check to false to leave loop
+generate a total price with currentprice times quantity user supplies
+
+checks if user can afford ending if not, otherwise prompts user to comfirm the purchase
+if yes subtracts from user money with spendmoney supplying a total cost
+uses agents buyItem to add them to agents inventory
+
+refreshes the view
+
+	sellItem = function(inventoryItem)
+
+sets up a check
+prompts user for how many they want to sell when they click the sell button on their inventory loops while check is true(while they do not enter a number greater than1 and a number higher than their inventory for the item) 
+when they enter something in between the check passes and exit the loop
+gets a total cost with quantity to sell times price 
+runs agent sellItem to remove items from inventory
+runs agent earnMoney to add the total cost to players pool of money
+
+	initBadThings = function(badThings)
+
+generates a array of bad things that can happen to the player that is picked at random using index in makeBadThingsHappen
+
+	Agent
+
+generates and agent that has 2 attributes money and inventory 
+starting with 1000 and an empty inventory array
+
+runs the agent.init() function
+
+	init = function(item)
+Promts for name and codename
+sets the agent.name and agent.codename
+
+	getInventoryItem = function(index)
+
+returns an agent inventory item at a supplied index
+
+	findItem = function(item_to_find)
+
+finds the supplied item in the agent.inventory with for loop and returns it
+
+	buyItem = function(item, quantity)
+
+looks if item already exists in inventory and adds to that if it exists
+else creates a new item with the supplied item and quantity
+
+BUG if it exists it adds to the items quantity as a string ex 1 + 1 = 11
+
+	sellItem = function(item, quantity)
+
+removes the supplied item in the supplied quantity
+looks to see if item exists in inventory if not "not found"
+if quantity is higher than invetory's quantity say "cannot remove that much"
+if it delepetes the inventory it splices the item out.
+if there is a remainder it just subtracts from the number
+
+
+	getRank = function()
+
+returns a rank depending on the amount money the agent has with if statements
+
+	canAfford = function(amount)
+
+checks if the supplied amount is less than what the agent.money pool has returning true or false
+
+	spendMoney = function(amount)
+
+if they pass the canAfford function it subtracts the supplied amount from the agent.money pool
+
+	earnMoney = function(amount)
+
+adds the supplied amount to the agent.money pool
